@@ -70,13 +70,31 @@ public:
 	{
 		p->data = n;
 	}
+	void erase(Data &obj)
+	{
+		Node <Data> *tmp = head, *pre = 0;
+		while (tmp)
+		{
+			if (tmp->data == obj)
+			{
+				if (pre)
+					pre->next = tmp->next;
+				else head = tmp->next;
+
+				delete tmp;
+
+				return;
+			}
+			pre = tmp;
+			tmp = tmp->next;
+		}
+	}
 	int getSize()
 	{
 		return size;
 	}
-	int reverce()
+	void reverce()
 	{
-		int count = 0;
 		Node<Data> *tmp = 0;
 		Node<Data> *next = 0;
 		if (head)
@@ -87,11 +105,8 @@ public:
 			tmp = head;
 			head = next;
 			next = head->next;
-			count++;
 		}
-		count = count + 1;
 		head->next = tmp;
-		return count;
 	}
 	~List()
 	{

@@ -6,5 +6,6 @@ class Word
 {
 	static int calculateHash(string &s);
 public:
-	int getHash(string &s) { return calculateHash(s);}
+	static int sizeTable;
+	static int getHash(string &s) { return calculateHash(s)%sizeTable;}
 };

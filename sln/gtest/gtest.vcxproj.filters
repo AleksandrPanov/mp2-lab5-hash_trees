@@ -18,18 +18,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\hash.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\word.h">
+    <ClInclude Include="..\..\gtest\gtest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\word.cpp">
+    <ClCompile Include="..\..\gtest\gtest-all.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
