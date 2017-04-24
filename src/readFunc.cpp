@@ -15,11 +15,11 @@ inline int getSym(char c)
 		return let;
 	else if (c >= '!' && c <= '@')
 		return sig;
-	else if (c == '\0') // должен быть '\0'
+	else if (c == '\0')
 		return stop;
 	else return del;
 }
-int readWord(char *start, char *& end, string &s)
+int readWord(char *start, char *& end, string &s, string &res)
 {
 	int i = 0;
 	int f = getSym(start[i]);
@@ -40,29 +40,27 @@ int readWord(char *start, char *& end, string &s)
 	if (f == sig)
 	{
 		end++;
-		s = string(start, 1);
+		res = string(start, 1);
 		return sig;
 	}
 
 	while (f == let)
 	{
 		i++;
+		end++;
 		f = getSym(start[i]);
 	}
-	end += i;
-	s = string(start, i);
+	res = string(start, i);
 	return let;
 }
-void readText()
+void readText(List <string> &l)
 {
-	List <string> l;
-	string tmp;
+	string tmp, res;
 	getline(cin, tmp, '\n');
 	char *st = &tmp[0], *end;
-	while (readWord(st, end, tmp) > 0)
+	while (readWord(st, end, tmp, res) > 0)
 	{
-		l.push_front(string(tmp));
+		l.push_front(res);
 		st = end;
 	}
-	//return l;
 }

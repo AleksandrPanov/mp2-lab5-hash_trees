@@ -3,4 +3,4 @@
 #include "list.h"
 using std::string;
 int readWord(char *start, char *&end, string &s);
-void readText();
+void readText(List <string> &l);

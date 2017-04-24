@@ -6,6 +6,7 @@ using std::string;
 int main()
 {
 	HashTableL<string, int, Word> h(7);
-	readText();
+	List<string> l;
+	readText(l);
 	return 0;
 }
