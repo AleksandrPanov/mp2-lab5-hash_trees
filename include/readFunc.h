@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "list.h"
+#include "hash.h"
+#include "word.h"
 using std::string;
-int readWord(char *start, char *&end, string &s);
-void readText(List <string> &l);
+void read_text_in_table(HashTableL<string, int, Word> & h);

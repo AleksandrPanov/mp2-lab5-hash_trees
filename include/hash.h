@@ -35,49 +35,67 @@ class HashTableL
 private:
 	int sizeTable;
 	List<Cont<Key, Data>> *table;
-	int maxCollisions = 0;
+	int maxCollision = 0;
+
+	int gHash(Key &k)
+	{
+		return Hash::getHash(k) % sizeTable;
+	}
 public:
 	HashTableL(int size)
 	{
 		table = new List<Cont<Key, Data>>[size];
 		sizeTable = size;
-		Hash::sizeTable = sizeTable;
 	}
 	void insert(Key k, Data d)
 	{
 		Cont <Key, Data>tmp(k, d);
 		Node<Cont<Key, Data>> *p;
-		int h = Hash::getHash(k);
+		int h = gHash(k);
 		p = table[h].find(tmp);
 		if (p)
 			table[h].update(p, tmp);
 		else table[h].push_front(tmp);
 
-		maxCollisions = max(table[h].getSize() - 1, maxCollisions);
+		maxCollision = max(table[h].getSize() - 1, maxCollision);
 	}
 	void erase(Key k)
 	{
 		Data d = 0;
 		Cont <Key, Data>tmp(k, d);
-		int h = Hash::getHash(k);
+		int h = gHash(k);
 		table[h].erase(tmp);
 	}
 
 	Data& operator [](Key k)
 	{
-		int h = Hash::getHash(k);
+		int h = gHash(k);
 		Data t = 0;
 		Cont <Key, Data> tmp(k, t);
 		Node<Cont<Key, Data>> *p = table[h].find(tmp);
 		if (p == 0)
 		{
-			insert(k, t);
-			return table[h].find(tmp)->data.gd();
+			table[h].push_front(tmp);
+			p = table[h].find(tmp);
 		}
+		maxCollision = max(table[h].getSize() - 1, maxCollision);
 		return p->data.gd();
 	}
 
-	int getMaxCol() { return  maxCollisions; }
+	int getMaxCol() { return  maxCollision; }
+
+	void printTable()
+	{
+		for (int i = 0; i < sizeTable; i++)
+		{
+			while (table[i].size)
+			{
+				Cont<Key, Data> t = table[i].quick_pop_front();
+				cout <<i<< ") hash = " <<Hash::getHash(t.k) <<" key = " << t.k << " data = "<<t.d<<'\n';
+			}
+		}
+		cout << "max colision = " << maxCollision << '\n';
+	}
 
 	~HashTableL()
 	{

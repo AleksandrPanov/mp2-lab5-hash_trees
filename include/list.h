@@ -25,8 +25,9 @@ class List
 {
 protected:
 	Node <Data> *head;
-	int size = 0;
 public:
+	int size = 0;
+
 	List() : head(0) {};
 	bool isEmpty() { return (head == NULL); }
 	Data quick_pop_front()

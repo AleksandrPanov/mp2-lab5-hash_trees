@@ -1,7 +1,5 @@
 #include "word.h"
 
-int Word::sizeTable = 1;
-
 int Word::calculateHash(string & s)
 {
 	int t = 0;
