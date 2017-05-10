@@ -1,7 +1,7 @@
 #pragma once
 #pragma once
 #include <iostream>
-
+#include "cont.h"
 using namespace std;
 
 template <class Data>
@@ -9,10 +9,7 @@ struct Node
 {
 	Data data;
 	Node* next;
-	Node()
-	{
-
-	}
+	Node(): next(0)	{}
 	Node(const Node<Data> &n)
 	{
 		data = n.data;
@@ -26,9 +23,9 @@ class List
 protected:
 	Node <Data> *head;
 public:
-	int size = 0;
+	int size;
 
-	List() : head(0) {};
+	List() : head(0), size(0) {};
 	bool isEmpty() { return (head == NULL); }
 	Data quick_pop_front()
 	{

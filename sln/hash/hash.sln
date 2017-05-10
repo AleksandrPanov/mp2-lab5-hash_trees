@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hash", "hash\hash.vcxproj", "{10D48F02-6E20-4857-99A8-6CE5E36AF3EA}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "..\test\test.vcxproj", "{4FF4E489-F893-4DED-9B0E-A6132523E517}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "..\gtest\gtest.vcxproj", "{20892C72-F513-40DE-8875-71D5EF76993B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinarySearchTree", "..\binarySearchTree\BinarySearchTree.vcxproj", "{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,14 @@ Global
 		{20892C72-F513-40DE-8875-71D5EF76993B}.Release|x64.Build.0 = Release|x64
 		{20892C72-F513-40DE-8875-71D5EF76993B}.Release|x86.ActiveCfg = Release|Win32
 		{20892C72-F513-40DE-8875-71D5EF76993B}.Release|x86.Build.0 = Release|Win32
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Debug|x64.ActiveCfg = Debug|x64
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Debug|x64.Build.0 = Debug|x64
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Debug|x86.ActiveCfg = Debug|Win32
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Debug|x86.Build.0 = Debug|Win32
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Release|x64.ActiveCfg = Release|x64
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Release|x64.Build.0 = Release|x64
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Release|x86.ActiveCfg = Release|Win32
+		{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

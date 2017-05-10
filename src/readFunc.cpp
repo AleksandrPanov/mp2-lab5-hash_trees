@@ -53,14 +53,3 @@ int readWord(char *start, char *& end, string &s, string &res)
 	res = string(start, i);
 	return let;
 }
-void read_text_in_table(HashTableL<string, int, Word> &h)
-{
-	string tmp, res;
-	getline(cin, tmp, '\n');
-	char *st = &tmp[0], *end;
-	while (readWord(st, end, tmp, res) > 0)
-	{
-		h[res]++;
-		st = end;
-	}
-}

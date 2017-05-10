@@ -1,12 +1,29 @@
 #pragma once
-#include "key.h"
-class Container
+template <class Key, class Data>
+class Cont
 {
-protected:
-	Key *key;
-	Data *data;
 public:
-	Container(Key *k, Data *d);
-	Data *getData() { return data; }
-	Container operator = (const Container &c);
+	Key k;
+	Data d;
+
+	Cont() :k(), d(0) {}
+	Cont(Key &k1, Data &d1) : k(k1), d(d1) {};
+	Cont(Key k1, Data d1, bool f) : k(k1), d(d1) {};
+
+	Data& gd()
+	{
+		return d;
+	}
+	bool operator == (const Cont &c)
+	{
+		return k == c.k;
+	}
+	bool operator < (const Cont &c)
+	{
+		return k < c.k;
+	}
+	bool operator > (const Cont &c)
+	{
+		return k > c.k;
+	}
 };
