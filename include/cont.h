@@ -9,6 +9,7 @@ public:
 	Cont() :k(), d(0) {}
 	Cont(Key &k1, Data &d1) : k(k1), d(d1) {};
 	Cont(Key k1, Data d1, bool f) : k(k1), d(d1) {};
+	Cont(Key &k1) : k(k1), d(0) {};
 
 	Data& gd()
 	{

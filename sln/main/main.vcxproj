@@ -147,6 +147,9 @@
     <ClCompile Include="..\..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\binarySearchTree\BinarySearchTree.vcxproj">
+      <Project>{a8254539-b6e2-429a-82b9-bb2ea2fbbce5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\func\func.vcxproj">
       <Project>{5c0bc5f0-aa92-49e3-9390-e5b479ecd7a3}</Project>
     </ProjectReference>

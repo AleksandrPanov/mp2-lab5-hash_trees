@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\binTree.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\bin_tree.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A8254539-B6E2-429A-82B9-BB2EA2FBBCE5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
