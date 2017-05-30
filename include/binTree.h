@@ -32,24 +32,6 @@ class BinTree
 private:
 	int size;
 	NodeTree<Cont<Key, Data>> *root;
-	inline void insNodeToLeft(node *ins, node *was)
-	{
-
-	}
-	inline void insNodeToRight(node *ins, node *was)
-	{
-
-	}
-	inline node* getLeftNode(node *n)
-	{
-		if (n)
-			return n->left;
-	}
-	inline node* getRightNode(node *n)
-	{
-		if (n)
-			return n->right;
-	}
 	void insertAfterTmp(node *tmp, node *ins)//начиная с узла tmp вставь узел ins
 	{
 		node *pred;
@@ -119,23 +101,14 @@ public:
 				size--;
 				if (pred) 
 				{
-					if (i == 0) 
-					{
-						if (tmp->left)
-							insertAfterTmp(pred->left, tmp->left);
-						if (tmp->right)
-							insertAfterTmp(pred->left, tmp->right);
+					if (tmp->left)
+						insertAfterTmp(pred, tmp->left);
+					if (tmp->right)
+						insertAfterTmp(pred, tmp->right);	
+					if (i == 0)
 						pred->left = 0;
-					}
-					else
-					{
-						if (tmp->left)
-							insertAfterTmp(pred->right, tmp->left);
-						if (tmp->right)
-							insertAfterTmp(pred->right, tmp->right);
+					else 
 						pred->right = 0;
-					}
-
 					delete tmp;
 					return;
 				}
