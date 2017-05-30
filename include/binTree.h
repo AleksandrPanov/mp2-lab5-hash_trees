@@ -1,6 +1,8 @@
 #pragma once
 #include <queue>
 #include "cont.h"
+#define node NodeTree<Cont<Key, Data>>
+#define cont Cont<Key, Data>
 
 template <class Data>
 struct NodeTree
@@ -10,6 +12,12 @@ struct NodeTree
 	NodeTree* right;
 
 	NodeTree(): left(0), right(0){}
+	NodeTree(const Data &d)
+	{
+		data = d;
+		left = 0;
+		right = 0;
+	}
 	NodeTree(const NodeTree<Data> &n)
 	{
 		data = n.data;
@@ -24,6 +32,51 @@ class BinTree
 private:
 	int size;
 	NodeTree<Cont<Key, Data>> *root;
+	inline void insNodeToLeft(node *ins, node *was)
+	{
+
+	}
+	inline void insNodeToRight(node *ins, node *was)
+	{
+
+	}
+	inline node* getLeftNode(node *n)
+	{
+		if (n)
+			return n->left;
+	}
+	inline node* getRightNode(node *n)
+	{
+		if (n)
+			return n->right;
+	}
+	void insertAfterTmp(node *tmp, node *ins)//начиная с узла tmp вставь узел ins
+	{
+		node *pred;
+		int i;
+		while (tmp)
+		{
+			pred = tmp;
+			if (ins->data < tmp->data)
+			{
+				i = 0;
+				tmp = tmp->left;
+			}
+			else if (ins->data > tmp->data)
+			{
+				i = 1;
+				tmp = tmp->right;
+			}
+			else
+			{
+				tmp->data = ins->data;
+				return;
+			}
+		}
+		if (i == 0)	pred->left = ins;
+		else pred->right = ins;
+		size++;
+	}
 public:
 	BinTree() : size(0), root(0) {};
 	int length()
@@ -32,44 +85,20 @@ public:
 	}
 	void insert(Key k, Data d)
 	{
-		Cont<Key, Data> el(k, d);
-		NodeTree<Cont<Key, Data>>*pred = 0, *tmp = root;
-		int i;
-		while (tmp)
+		if (!root)
 		{
-			pred = tmp;
-			if (el < tmp->data)
-			{
-				i = 0;
-				tmp = tmp->left;
-			}
-			else if (el > tmp->data)
-			{
-				i = 1;
-				tmp = tmp->right;
-			}
-			else
-			{
-				tmp->data = el;
-				return;
-			}		
+			root = new node(cont(k, d));
+			size++;
+			return;
 		}
-		size++;
-		tmp = new NodeTree<Cont<Key, Data>>();
-		tmp->data = el;
-		if (root == 0) 
-			root = tmp;
-		else 
-		{
-			if (i == 0)	pred->left = tmp;
-			else pred->right = tmp;
-		}
+		node *tmp = new node(cont(k, d));
+		insertAfterTmp(root, tmp);
 	}
 	void erase(Key k)
 	{
 		Data t(0);
-		Cont<Key, Data> el(k, t);
-		NodeTree<Cont<Key, Data>>*pred = 0, *tmp = root;
+		cont el(k, t);
+		node *pred = 0, *tmp = root;
 		int i;
 		while (tmp)
 		{
@@ -90,8 +119,23 @@ public:
 				size--;
 				if (pred) 
 				{
-					if (i == 0)	pred->left = tmp->left;
-					else pred->right = tmp->right;
+					if (i == 0) 
+					{
+						if (tmp->left)
+							insertAfterTmp(pred->left, tmp->left);
+						if (tmp->right)
+							insertAfterTmp(pred->left, tmp->right);
+						pred->left = 0;
+					}
+					else
+					{
+						if (tmp->left)
+							insertAfterTmp(pred->right, tmp->left);
+						if (tmp->right)
+							insertAfterTmp(pred->right, tmp->right);
+						pred->right = 0;
+					}
+
 					delete tmp;
 					return;
 				}
