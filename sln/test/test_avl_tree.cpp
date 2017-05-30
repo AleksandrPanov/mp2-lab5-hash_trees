@@ -18,3 +18,20 @@ TEST(AVL_tree, can_search)
 	AVLNode<string, int>* k;
 	EXPECT_NO_THROW(t, k);
 }
+
+TEST(AVL_tree, can_find)
+{
+	const int n = 5;
+	AVLTree<string, int> t;
+	string s[n] = {"123","d","b","a","e"};
+	AVLNode<string, int>* k;
+	for (int i = 0; i < n; i++)
+	{
+		t[s[i]] = 1 + i;
+		EXPECT_TRUE(t.find(s[i], k));
+	}
+	for (int i = 0; i < n; i++)
+	{
+		EXPECT_TRUE(t.find(s[i], k));
+	}
+}

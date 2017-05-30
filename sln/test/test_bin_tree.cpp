@@ -40,7 +40,7 @@ TEST(bin_tree, can_insert_eq_el2)
 	EXPECT_EQ(t[2], 2);
 }
 
-TEST(bin_tree, can_insert_er)
+TEST(bin_tree, can_insert_erase)
 {
 	BinTree<int, int> t;
 	t.insert(1, 1);
@@ -54,7 +54,6 @@ TEST(bin_tree, can_insert_er)
 	t.erase(1);
 	EXPECT_TRUE(t.find(1)== 0);
 }
-
 TEST(bin_tree, can_insert_and_erase)
 {
 	BinTree<int, int> t;
@@ -69,7 +68,7 @@ TEST(bin_tree, can_insert_and_erase)
 
 	t.insert(8, 1);
 
-	t.erase(3);
+	t.erase(3);//было 7 вершин. Должно стать 6.
 
 	int count = 0;
 	for (int i = 2; i <= 8; i++)
