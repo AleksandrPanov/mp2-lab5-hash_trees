@@ -54,3 +54,28 @@ TEST(bin_tree, can_insert_er)
 	t.erase(1);
 	EXPECT_TRUE(t.find(1)== 0);
 }
+
+TEST(bin_tree, can_insert_and_erase)
+{
+	BinTree<int, int> t;
+
+	t.insert(7, 1);
+	t.insert(5, 1);
+	t.insert(6, 1);
+
+	t.insert(3, 1);
+	t.insert(2, 1);
+	t.insert(4, 1);
+
+	t.insert(8, 1);
+
+	t.erase(3);
+
+	int count = 0;
+	for (int i = 2; i <= 8; i++)
+	{
+		if (t[i] == 1)
+			count++;
+	}
+	EXPECT_EQ(count, 6);
+}

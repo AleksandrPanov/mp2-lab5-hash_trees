@@ -101,14 +101,15 @@ public:
 				size--;
 				if (pred) 
 				{
+					if (i == 0)
+						pred->left = 0;
+					else
+						pred->right = 0;
+
 					if (tmp->left)
 						insertAfterTmp(pred, tmp->left);
 					if (tmp->right)
-						insertAfterTmp(pred, tmp->right);	
-					if (i == 0)
-						pred->left = 0;
-					else 
-						pred->right = 0;
+						insertAfterTmp(pred, tmp->right);						
 					delete tmp;
 					return;
 				}
